@@ -116,6 +116,7 @@ export class SmartGPT {
     const response = await this.#openai.chat.completions.create({
       model: this.#model,
       messages,
+      stop: ":::tool_output:::",
     });
 
     const message = response.choices[0].message.content || "";
@@ -139,7 +140,7 @@ export class SmartGPT {
             ...(options.messages || []),
             {
               role: "system",
-              content: `${message}:::tool_output:::${pluginResponse}`,
+              content: `${message}\n\n:::tool_output:::\n${pluginResponse}\n\n:::tool_output:::\n`,
             },
           ],
           onPlugin: options.onPlugin,
