@@ -149,7 +149,13 @@ export class SmartGPT {
     }
 
     if (options.onMessages) {
-      await options.onMessages(messages);
+      await options.onMessages([
+        ...options.messages,
+        {
+          role: "assistant",
+          content: message,
+        },
+      ]);
     }
 
     return message;
