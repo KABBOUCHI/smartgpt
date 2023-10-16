@@ -24,7 +24,7 @@ export interface IQueryOptions {
 export interface ISmartGPTPlugin {
   name: string;
   description: string;
-  handle(input: any): Promise<string>;
+  handle(input: any): Promise<string> | string;
 }
 
 export const defineSmartGPTPlugin = (plugin: ISmartGPTPlugin) => {

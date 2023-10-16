@@ -35,14 +35,13 @@ Usage:
 ```js
 const gpt = new SmartGPT({
     plugins: [
-    defineSmartGPTPlugin({
-        name: "search",
-        description:
-        "Useful for getting the accurate result of a math expression. The input to this tool should be a valid mathematical expression that could be executed by modern JavaScript runtime",
-        handle: async (input) => {
-        return await Promise.resolve("ETH price is $420");
-        },
-    }),
+        defineSmartGPTPlugin({
+            name: "search",
+            description: "a search engine. useful for when you need to answer questions about current events. input should be a search query.",
+            handle: (input) => {
+                return "ETH price is $69,420";
+            },
+        }),
     ],
 });
 
